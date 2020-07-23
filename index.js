@@ -59,7 +59,7 @@ class Person {
     return`Hi my name is ${this.name}  and I am ${this.age} years old.`
   }
 }
-console.log(new Person("Emanuel", 29).toString());
+
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -85,16 +85,18 @@ class Car {
     this.tank = gallons + this.tank;
   }
   drive(distance){
-    this.odometer = distance + this.odometer;
-    this.tank = this.tank - (distance/this.milesPerGallon);
-    if(this.tank === 0){
-      return `I ran out of fuel at ${this.odometer} miles!`
-    }
+    if(this.tank - distance/this.milesPerGallon > 0){
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - distance/this.milesPerGallon;
+    }else{
+      this.odomater = this.odometer + this.tank * this.milesPerGallon;
+      this.tank = 0; 
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    
   }
 }
-const chevy= new Car("Chevy",29);
-chevy.fill(14);
-console.log(chevy.tank);
+
+
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -107,18 +109,19 @@ console.log(chevy.tank);
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
+// @ts-ignore
 class Lambdasian {
-  constructor(attribute) {
-    this.name = attribute.name;
-    this.age = attribute.age;
-    this.location= attribute.location
+  constructor(para) {
+    this.name = para.name;
+    this.age = para.age;
+    this.location = para.location;
   }
   speak(){
-    return `Hello, my name is ${this.name}, I am from ${location}.`
+    return `Hello my name is ${this.name}, I am from ${this.location}`;
   }
 }
-const speak = new Lambdasian({name:"Emanuel", age: 20, location: "US"});
-console.log(speak.speak());
+// const speak = new Lambdasian({name:"Emanuel", age: 20, location: "US"});
+
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -133,7 +136,14 @@ console.log(speak.speak());
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+  constructor(para){
+   super(para);
+   this.specialty = para.specialty;
+  this.favLanguage= para.favLanguage;
+  this
+  }
+  
 
 }
 
