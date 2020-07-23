@@ -56,7 +56,7 @@ class Person {
   }
   
   toString(){
-    return`Hi my name is ${this.name}  and I am ${this.age} years old.`
+    return`Hi my name is ${this.name}  and I am ${this.age} years old.`;
   }
 }
 
@@ -109,7 +109,7 @@ class Car {
         + Speaking should return a phrase `Hello my name is {name}, I am from {location}`.
         + {name} and {location} of course come from the instance's own properties.
 */
-// @ts-ignore
+
 class Lambdasian {
   constructor(para) {
     this.name = para.name;
@@ -141,7 +141,7 @@ class Instructor extends Lambdasian{
    super(para);
    this.specialty = para.specialty;
   this.favLanguage= para.favLanguage;
-  this
+  this.catchPhrase= para.catchPhrase;
   }
   
 
